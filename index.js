@@ -45,7 +45,7 @@ function censor(text, replacementString, wordToCensor) {
     if (wordsArray[word] === wordToCensor) {
       
       wordsArray.splice(word, 1, replacementString)
-      console.log(wordsArray)
+      
 
       wordCount ++
 
@@ -54,7 +54,7 @@ function censor(text, replacementString, wordToCensor) {
     }
     // if there has been no word counted, and we are on the last word in the array thn print there is no word
     else if (wordsArray[word] === wordsArray[wordsArray.length-1]) {
-      console.log()
+      console.log(wordsArray)
     }
     else if (wordCount === 0 && wordsArray[word] === wordsArray[wordsArray.length-1]) {
       console.log(`There is no such word ☹`)
@@ -74,7 +74,7 @@ function censor(text, replacementString, wordToCensor) {
  sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
  
-  censor(text, "******", "lndsnj")
+  censor(text, "******", "dddd")
 
 
 
