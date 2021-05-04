@@ -30,52 +30,45 @@ Instead of using hard-coded inputs, use prompts to grab:
 // => Action: replaces word to censor it the replacement string 
 // => Return: the new array if one was found, flase if string couldt be found 
 
+const text =
+"Lorem, ipsum ipsum ipsum dolor sit amet, consectetur adipisicing elit, \
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi \
+ut aliquip ex ea tempor commodo consequat. Duis aute irure dolor in reprehenderit \
+in voluptate velit esse cillum dolore eu fugiat nulla pariatur. \
+Excepteur sint occaecat tempor cupidatat non proident, \
+sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
-function censor(text, replacementString, wordToCensor) {
+wordToCensor = prompt(`What word would you like to censor?`)
+replacementString = prompt(`What would you like to replace the word with?`)
+textToCensor = text
+
+censor(textToCensor, wordToCensor, replacementString)
+
+function censor(textToCensor, wordToCensor, replacementString) {
   
   //✔ take the string, and put each word in an array called words
-  const wordsArray = text.split(' ')
-  console.log(`words: ${wordsArray}`)
+  let wordsArray = textToCensor.split(' ')
+  // console.log(`words: ${wordsArray}`)
   
   //✔ check the array against wordToCensor, note down its index in an array, make a count of the words frequency
   let wordCount = 0
 
   for (let word in wordsArray) {
-
-    if (wordsArray[word] === wordToCensor) {
-      
-      wordsArray.splice(word, 1, replacementString)
-      
-
-      wordCount ++
-
-      console.log(`count ${wordCount}`)
-
-    }
-    // if there has been no word counted, and we are on the last word in the array thn print there is no word
-    else if (wordsArray[word] === wordsArray[wordsArray.length-1]) {
-      console.log(wordsArray)
+    if (wordsArray[word].toLowerCase() === wordToCensor.toLowerCase()) {
+      // wordsArray.splice(word, 1, replacementString)
+      wordsArray[word] = replacementString
+      wordCount++
     }
     else if (wordCount === 0 && wordsArray[word] === wordsArray[wordsArray.length-1]) {
       console.log(`There is no such word ☹`)
-      return false
+      return undefined
     }
-  
+    // if there has been no words counted, and we are on the last word in the array, then print there is no word
+    else if (wordsArray[word] === wordsArray[wordsArray.length-1]) {
+      wordsArray = wordsArray.join(" ")
+      alert(`You're new string is:\n ${wordsArray}\n\n You replaced the word ${wordCount} times`)
+      return wordsArray
+    } 
   }
- }
-
- const text =
- "Lorem, ipsum ipsum ipsum dolor sit amet, consectetur adipisicing elit, \
- sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
- Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi \
- ut aliquip ex ea tempor commodo consequat. Duis aute irure dolor in reprehenderit \
- in voluptate velit esse cillum dolore eu fugiat nulla pariatur. \
- Excepteur sint occaecat tempor cupidatat non proident, \
- sunt in culpa qui officia deserunt mollit anim id est laborum.";
-
- 
-  censor(text, "******", "dddd")
-
-
-
-
+}
