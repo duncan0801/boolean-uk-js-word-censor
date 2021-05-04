@@ -57,7 +57,7 @@ function censor(textToCensor, wordToCensor, replacementString) {
       wordCount++
     }
     else if (wordCount === 0 && wordsArray[word] === wordsArray[wordsArray.length-1]) {
-      console.log(`There is no such word as ${wordToCensor} in the string ☹`)
+      alert(`There is no such word as ${wordToCensor} in the string ☹`)
       return undefined
     }
   }
