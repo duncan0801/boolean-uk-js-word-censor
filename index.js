@@ -43,14 +43,10 @@ wordToCensor = prompt(`What word would you like to censor?`)
 replacementString = prompt(`What would you like to replace the word with?`)
 textToCensor = text
 
-censor(textToCensor, wordToCensor, replacementString)
-
 function censor(textToCensor, wordToCensor, replacementString) {
-  
   //✔ take the string, and put each word in an array called words
   let wordsArray = textToCensor.split(' ')
   // console.log(`words: ${wordsArray}`)
-  
   //✔ check the array against wordToCensor, note down its index in an array, make a count of the words frequency
   let wordCount = 0
 
@@ -61,14 +57,14 @@ function censor(textToCensor, wordToCensor, replacementString) {
       wordCount++
     }
     else if (wordCount === 0 && wordsArray[word] === wordsArray[wordsArray.length-1]) {
-      console.log(`There is no such word ☹`)
+      console.log(`There is no such word as ${wordToCensor} in the string ☹`)
       return undefined
     }
-    // if there has been no words counted, and we are on the last word in the array, then print there is no word
-    else if (wordsArray[word] === wordsArray[wordsArray.length-1]) {
-      wordsArray = wordsArray.join(" ")
-      alert(`You're new string is:\n ${wordsArray}\n\n You replaced the word ${wordCount} times`)
-      return wordsArray
-    } 
   }
+  // if there has been no words counted, and we are on the last word in the array, then print there is no word 
+  wordsArray = wordsArray.join(" ")
+  alert(`You're new string is:\n ${wordsArray}\n\n You replaced the word ${wordCount} times`)
+  return wordsArray
 }
+
+censor(textToCensor, wordToCensor, replacementString)
